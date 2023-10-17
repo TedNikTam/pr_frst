@@ -4,6 +4,11 @@ import zipfile
 
 # kaggle datasets -h
 
+#=====делаем запрос на список  (20 файлов)======
+# rqst = input("Введите запрос на английском: ")
+# str = os.system(f"kaggle datasets list -s {rqst}")
+# qwe = os.system(f"kaggle datasets files {rqst} {str}")
+
 #=========СКАЧИВАНИЕ CSV-ФАЙЛА, ПОЛУЧЕНИЕ ИНФОРМАЦИИ, УДАЛЕНИЕ==========
 obj_adress = ("gauravduttakiit/media-campaign-cost-prediction") # адрес для скачивания 
 obj_dwnld = os.system(f'kaggle datasets download -d {obj_adress}') # скачивание файла
