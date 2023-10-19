@@ -30,29 +30,146 @@ data = pd.read_csv('spotify-2023.csv', encoding='latin-1')
 # a = list(data.columns)
 # print(type(a))
 # print(pd.Series(data.columns)) # вывод названия столбцов и их индексов
-print(data)
+print(data.columns)
+
+# df = pd.DataFrame(data)
+# www = input('Введите название столбца: ')
+# eee = input('Введите сортировочное значение: ')
+# qqq = int(input('Введите ещё одно сортировочное значение: '))
+# if eee == '>':
+#     print (df.loc[df[f'{www}'] > qqq])
+#     print(data[data[f'{www}'] > qqq])
+# elif eee == '<':
+#     print (df.loc[df[f'{www}'] < qqq])
+#     print(data[data[f'{www}'] < qqq])
+# elif eee == '==' or '=':
+#     print (df.loc[df[f'{www}'] == qqq])
+#     print(data[data[f'{www}'] == qqq])
+# elif eee == '!=':
+#     print (df.loc[df[f'{www}'] != qqq])
+#     print(data[data[f'{www}'] != qqq])
+# elif eee == '>=':
+#     print (df.loc[df[f'{www}'] >= qqq])
+#     print(data[data[f'{www}'] >= qqq])
+# elif eee == '<=':
+#     print (df.loc[df[f'{www}'] <= qqq])
+#     print(data[data[f'{www}'] <= qqq])
+
+column_name = input("Введите название столбца: ")
+sort_sign = input("Введите знак сортировки: ")
+numerical_sort = int(input("Введите ещё одно сортировочное значение: "))
+more_sort = input("Добавить ещё один параметр сортировки? (y/n или да/нет): ")
+
+a = ''
+b = ''
+if more_sort == 'n':
+    if sort_sign == '>':
+        a = (data[data[f'{column_name}'] > numerical_sort])
+    elif sort_sign == '<':
+        a = (data[data[f'{column_name}'] < numerical_sort])
+    # elif sort_sign == '==' or '=':
+    #     a = (data[data[f'{column_name}'] == numerical_sort])
+    elif sort_sign == '!=':
+        a = (data[data[f'{column_name}'] != numerical_sort])
+    elif sort_sign == '>=':
+        a = (data[data[f'{column_name}'] >= numerical_sort])
+    elif sort_sign == '<=':
+        a = (data[data[f'{column_name}'] <= numerical_sort])
+    print(a)
+elif more_sort == 'y':
+    column_name1 = input("Введите название 2го столбца: ")
+    sort_sign1 = input("Введите знак сортировки: ")
+    numerical_sort1 = int(input("Введите ещё одно сортировочное значение: "))
+    if sort_sign1 == '>':
+        b = (data[data[f'{column_name1}'] > numerical_sort1])
+    elif sort_sign == '<':
+        b = (data[data[f'{column_name1}'] < numerical_sort1])
+    # elif sort_sign == '==' or '=':
+    #     b = (data[data[f'{column_name1}'] == numerical_sort1])
+    elif sort_sign == '!=':
+        b = (data[data[f'{column_name1}'] != numerical_sort1])
+    elif sort_sign == '>=':
+        b = (data[data[f'{column_name1}'] >= numerical_sort1])
+    elif sort_sign1 == '==':
+        # b = (data[(data[f'{column_name}'] < numerical_sort1) & (data[f'{column_name1}'] <= numerical_sort1)])
+        b = (data[(data[f'{column_name}'] == numerical_sort) & (data[f'{column_name1}'] == numerical_sort1)])
+    print(b)
 
 
-def column_name():
-    column_name = input("Введите название столбца: ")
-    if column_name == '':
-        print(data)
-    else:
-        for i in data.columns:
-            if i == column_name:
-                column_name = input("Введите название ещё одного столбца столбца: ")
-                if column_name =='':
-                    print(data[(data[i]>2022)])
-                for o in data.columns:
-                    if o == column_name:
-                        column_name = input("Введите название ещё одного столбца столбца: ")
-                        print(data[(data[i]>2022) & (data[o]>3)])
-                        break
-    
-            
-        
-    #     # print(data[(data[column_name]>2022) & (data[column_name]>2) & (data[column_name]>45)])
-column_name()
+
+# else:
+#     print('нет так нет')
+
+
+
+# def column_name():
+#     column_name = input("Введите название столбца: ")
+#     # sort_sign = input('Введите знак сортировки: ')
+#     # numerical_sort = int(input('Введите ещё одно сортировочное значение: '))
+#     if column_name == '':
+#         print(data)
+#     else:
+#         for i in data.columns:
+#             if i == column_name:
+#                 sort_sign = input("Введите знак сортировки: ")
+#                 numerical_sort = int(input("Введите ещё одно сортировочное значение: "))
+#                 more_sort = input("Добавить ещё один параметр сортировки? (y/n или да/нет): ")
+#                 if more_sort == 'n':
+#                     if sort_sign == '>':
+#                         print(data[data[f'{column_name}'] > numerical_sort])
+#                     elif sort_sign == '<':
+#                         print(data[data[f'{column_name}'] < numerical_sort])
+#                     elif sort_sign == '==' or '=':
+#                         print(data[data[f'{column_name}'] == numerical_sort])
+#                     elif sort_sign == '!=':
+#                         print(data[data[f'{column_name}'] != numerical_sort])
+#                     elif sort_sign == '>=':
+#                         print(data[data[f'{column_name}'] >= numerical_sort])
+#                     elif sort_sign == '<=':
+#                         print(data[data[f'{column_name}'] <= numerical_sort])
+#                 else:
+#                     print('нет так нет')
+
+#                     # column_name = input("Введите название ещё одного столбца столбца: ")
+#                     # if column_name == '':
+#                     #     print(data)
+#                     # if sort_sign == '>':
+#                     #     print(data[data[f'{column_name}'] > numerical_sort])
+#                     # elif sort_sign == '<':
+#                     #     print(data[data[f'{column_name}'] < numerical_sort])
+#                     # elif sort_sign == '==' or '=':
+#                     #     print(data[data[f'{column_name}'] == numerical_sort])
+#                     # elif sort_sign == '!=':
+#                     #     print(data[data[f'{column_name}'] != numerical_sort])
+#                     # elif sort_sign == '>=':
+#                     #     print(data[data[f'{column_name}'] >= numerical_sort])
+#                     # elif sort_sign == '<=':
+#                     #     print(data[data[f'{column_name}'] <= numerical_sort])
+#                 # for o in data.columns:
+#                 #     if o == column_name:
+#                 #         if sort_sign == '==' or '=':
+#                 #             print(data[data[f'{column_name}'] == numerical_sort & data[f'{o}'] == numerical_sort])
+#                 #         break
+# column_name()
+
+#=================================================
+
+# def column_name():
+#     column_name = input("Введите название столбца: ")
+#     if column_name == '':
+#         print(data)
+#     else:
+#         for i in data.columns:
+#             if i == column_name:
+#                 column_name = input("Введите название ещё одного столбца столбца: ")
+#                 if column_name == '':
+#                     print(data[(data[i]==2018)])
+#                 for o in data.columns:
+#                     if o == column_name:
+#                         column_name = input("Введите название ещё одного столбца столбца: ")
+#                         print(data[(data[i]>2022) & (data[o]>3)])
+#                         break
+# column_name()
 #=================================================
 
 
