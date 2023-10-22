@@ -60,41 +60,44 @@ sort_sign = input("Введите знак сортировки: ")
 numerical_sort = int(input("Введите ещё одно сортировочное значение: "))
 more_sort = input("Добавить ещё один параметр сортировки? (y/n или да/нет): ")
 
-a = ''
-b = ''
-if more_sort == 'n':
+def sort():
+    a = ''
+    b = ''
     if sort_sign == '>':
-        a = (data[data[f'{column_name}'] > numerical_sort])
+        a = (data[f'{column_name}'] > numerical_sort)
     elif sort_sign == '<':
-        a = (data[data[f'{column_name}'] < numerical_sort])
-    # elif sort_sign == '==' or '=':
-    #     a = (data[data[f'{column_name}'] == numerical_sort])
+        a = (data[f'{column_name}'] < numerical_sort)
+    elif sort_sign == '==' or '=':
+        a = (data[f'{column_name}'] == numerical_sort)
     elif sort_sign == '!=':
-        a = (data[data[f'{column_name}'] != numerical_sort])
+        a = (data[f'{column_name}'] != numerical_sort)
     elif sort_sign == '>=':
-        a = (data[data[f'{column_name}'] >= numerical_sort])
+        a = (data[f'{column_name}'] >= numerical_sort)
     elif sort_sign == '<=':
-        a = (data[data[f'{column_name}'] <= numerical_sort])
-    print(a)
-elif more_sort == 'y':
-    column_name1 = input("Введите название 2го столбца: ")
-    sort_sign1 = input("Введите знак сортировки: ")
-    numerical_sort1 = int(input("Введите ещё одно сортировочное значение: "))
-    if sort_sign1 == '>':
-        b = (data[data[f'{column_name1}'] > numerical_sort1])
-    elif sort_sign == '<':
-        b = (data[data[f'{column_name1}'] < numerical_sort1])
-    # elif sort_sign == '==' or '=':
-    #     b = (data[data[f'{column_name1}'] == numerical_sort1])
-    elif sort_sign == '!=':
-        b = (data[data[f'{column_name1}'] != numerical_sort1])
-    elif sort_sign == '>=':
-        b = (data[data[f'{column_name1}'] >= numerical_sort1])
-    elif sort_sign1 == '==':
-        # b = (data[(data[f'{column_name}'] < numerical_sort1) & (data[f'{column_name1}'] <= numerical_sort1)])
-        b = (data[(data[f'{column_name}'] == numerical_sort) & (data[f'{column_name1}'] == numerical_sort1)])
-    print(b)
-
+        a = (data[f'{column_name}'] <= numerical_sort)
+        
+    if more_sort == 'n':
+        print(data[a])
+    elif more_sort == 'y':
+        column_name1 = input("Введите название 2го столбца: ")
+        sort_sign1 = input("Введите знак сортировки: ")
+        numerical_sort1 = int(input("Введите ещё одно сортировочное значение: "))
+        if sort_sign1 == '>':
+            b = (data[f'{column_name1}'] > numerical_sort1)
+        elif sort_sign1 == '<':
+            b = (data[f'{column_name1}'] < numerical_sort1)
+        elif sort_sign1 == '==' or '=':
+            b = (data[f'{column_name1}'] == numerical_sort1)
+        elif sort_sign1 == '!=':
+            b = (data[f'{column_name1}'] != numerical_sort1)
+        elif sort_sign1 == '>=':
+            b = (data[f'{column_name1}'] >= numerical_sort1)
+        elif sort_sign1 == '<=':
+            b = (data[f'{column_name1}'] <= numerical_sort1)
+            # if more_sort == 'y':
+            #     print(data[b])
+        print(data[a][b])
+sort()
 
 
 # else:
